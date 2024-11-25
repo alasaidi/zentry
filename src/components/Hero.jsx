@@ -1,10 +1,12 @@
 import { useRef, useState } from "react";
+import Button from "./button";
+import { TiLocationArrow } from "react-icons/ti";
 function Hero() {
   const [currentIndex, setCurrentIndex] = useState(1);
   const [hasClicked, setHasClicked] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [loadedVideos, setLoadedVideos] = useState(0);
-  const totalVideo = 3;
+  const totalVideo = 4;
   const nextVideoRef = useRef(null);
 
   const handleVideoLoad = () => {
@@ -38,11 +40,22 @@ function Hero() {
 
           <div>
             <video ref={nextVideoRef} src={getVideoSrc(currentIndex)} loop muted id="next-video" className="absolute-center invisible absolute z-20 size-64 object-cover object-center" onLoadedData={handleVideoLoad} />
-            <video src={getVideoSrc(currentIndex === totalVideo - 1 ? 1 : currentIndex)} autoPlay loop muted className="absolute left-0 top-0 size-full object-cover object-center" onLoadedData={handleVideoLoad} />
+            <video src={getVideoSrc(currentIndex === totalVideo - 1 ? 1 : currentIndex)} loop muted className="absolute left-0 top-0 size-full object-cover object-center" onLoadedData={handleVideoLoad} />
           </div>
           <h1 className="special-font hero-heading absolute bottom-5 right-5 text-blue-75">
             G<b>a</b>ming
           </h1>
+          <div className="absolute left-0 top-0 z-40 size-full">
+            <div className="mt-24 px-5 sm:px-10">
+              <h1 className="special-font hero-heading text-blue-100">
+                redefi<b>n</b>e
+              </h1>
+              <p className="mb-5 maw-w-64 font-robert-regular text-blue-100">
+                Enter the metagame layer <br /> Unleash the player Economy
+              </p>
+              <Button id="watch-trailer" title="Watch Trailer" leftIcon={<TiLocationArrow />} containerClass="!bg-yellow-300 flex-center gap-1" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
