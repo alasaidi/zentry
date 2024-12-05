@@ -9,10 +9,10 @@ const BentoTilt = ({ children, className = "" }) => {
     const relativeX = (e.clientX - left) / width;
     const relativeY = (e.clientY - top) / height;
 
-    const tiltX = (relativeY - 0.5) * 5;
-    const tiltY = (relativeX - 0.5) * -5;
+    const tiltX = (relativeY - 0.5) * 7;
+    const tiltY = (relativeX - 0.5) * -7;
 
-    const newTransform = `perspective(700px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(.95, .95, .95)`;
+    const newTransform = `perspective(700px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(.95, .95, .95) `;
     setTransformStyle(newTransform);
   };
   const handleMouseLeave = () => {
@@ -27,7 +27,7 @@ const BentoTilt = ({ children, className = "" }) => {
 
 const BentoCard = ({ src, title, description }) => {
   return (
-    <div className="relative size-full">
+    <div className="relative size-full ">
       <video src={src} loop muted autoPlay className="absolute left-0 top-0 size-full object-cover object-center" />
       <div className="relative z-10 flex size-full flex-col justify-between p-5 text-blue-50">
         <div>
@@ -48,7 +48,7 @@ const Features = () => {
           <p className="max-w-md font-circular-web text-lg text-blue-50 opacity-50">Immerse yourself in a rich and ever-expanding ecosystem where a vibrant array of products converge into an interconnected universe.</p>
         </div>
 
-        <BentoTilt className="border-hsla relative mb-7 h-96 w-full overflow-hidden rounded-md md:h-[65vh]">
+        <BentoTilt className="border-hsla relative mb-7 h-96 w-full overflow-hidden rounded-md md:h-[65vh] cursor-grabbing">
           <BentoCard
             src="videos/feature-1.mp4"
             title={
@@ -60,7 +60,7 @@ const Features = () => {
           />
         </BentoTilt>
         <div className="grid h-[160vh] grid-cols-2 grid-rows-3 gap-7">
-          <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2">
+          <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2 cursor-grabbing">
             <BentoCard
               src="videos/feature-2.mp4"
               title={
@@ -71,7 +71,7 @@ const Features = () => {
               description="An anime and gaming-inspired NFT collection-the IP primed for expansion "
             />
           </BentoTilt>
-          <BentoTilt className="bento-tilt_1 row-span-1 ms-32 md:col-span-1 md:ms-0">
+          <BentoTilt className="bento-tilt_1 row-span-1 ms-32 md:col-span-1 md:ms-0 cursor-grabbing">
             <BentoCard
               src="videos/feature-3.mp4"
               title={
@@ -82,7 +82,7 @@ const Features = () => {
               description="A Gamified social hub, adding a new dimension to your play identity, web3 engagement and interaction   "
             />
           </BentoTilt>
-          <BentoTilt className="bento-tilt_1 me-14  md:col-span-1 md:me-0">
+          <BentoTilt className="bento-tilt_1 me-14  md:col-span-1 md:me-0 cursor-grabbing">
             <BentoCard
               src="videos/feature-4.mp4"
               title={
@@ -93,7 +93,7 @@ const Features = () => {
               description="A cross-world AI Agent - elevating your gameplay to be more fun and productive."
             />
           </BentoTilt>
-          <BentoTilt className="bento-tilt_2 flex-col">
+          <BentoTilt className="bento-tilt_2 flex-col cursor-grabbing">
             <div className="flex size-full flex-col justify-between bg-violet-300 p-5">
               <h1 className="bento-title special-font max-w-64 text-black">
                 m<b>o</b>re <br />
@@ -103,7 +103,7 @@ const Features = () => {
               <TiLocationArrow className="m-5 scale-[5] self-end" />
             </div>
           </BentoTilt>
-          <BentoTilt className="bento-tilt_2">
+          <BentoTilt className="bento-tilt_2 cursor-grabbing">
             <video src="videos/feature-5.mp4" loop muted autoPlay className="size-full object-cover object-center" />
           </BentoTilt>
         </div>
