@@ -5,17 +5,38 @@ const BentoTilt = ({ children, className = "" }) => {
   const itemRef = useRef();
   const handleMouseMove = (e) => {
     if (!itemRef.current) return;
+
     const { left, top, width, height } = itemRef.current.getBoundingClientRect();
+
+    // More nuanced relative positioning
     const relativeX = (e.clientX - left) / width;
     const relativeY = (e.clientY - top) / height;
 
-    const tiltX = (relativeY - 0.5) * 7;
-    const tiltY = (relativeX - 0.5) * -7;
+    // Increased range and smoothness
+    const tiltX = (relativeY - 0.5) * 10; // Increased from 7 to 10
+    const tiltY = (relativeX - 0.5) * -10; // Increased from -7 to -10
 
-    const newTransform = `perspective(700px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(.95, .95, .95) `;
+    // More sophisticated transform with additional effects
+    const newTransform = `
+      perspective(1000px) 
+      rotateX(${tiltX}deg) 
+      rotateY(${tiltY}deg) 
+      scale3d(0.95, 0.95, 0.95)
+      translateZ(50px)
+    `;
+
+    // Optional: Add shadow for depth
+    itemRef.current.style.boxShadow = `
+      ${tiltY * 2}px ${tiltX * 2}px 20px rgba(0,0,0,0.2)
+    `;
+
     setTransformStyle(newTransform);
   };
+
   const handleMouseLeave = () => {
+    if (itemRef.current) {
+      itemRef.current.style.boxShadow = "none";
+    }
     setTransformStyle("");
   };
   return (
