@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import AnimatedTitle from "./AnimatedTitle";
 import gsap from "gsap";
+import RoundedCorner from "./RoundedCorner";
 
 const Story = () => {
   const frameRef = useRef(null);
@@ -53,6 +54,7 @@ const Story = () => {
                 <img ref={frameRef} onMouseLeave={handleMouseLeave} onMouseUp={handleMouseLeave} onMouseEnter={handleMouseLeave} onMouseMove={handleMouseMove} src="/img/entrance.webp" alt="entrance" className="object-contain " />
               </div>
             </div>
+            <RoundedCorner />
           </div>
         </div>
       </div>
