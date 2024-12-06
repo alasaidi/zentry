@@ -8,37 +8,43 @@ const Story = () => {
   const handleMouseMove = (e) => {
     const { clientX, clientY } = e;
     const element = frameRef.current;
-
     if (!element) return;
 
     const rect = element.getBoundingClientRect();
     const xPos = clientX - rect.left;
     const yPos = clientY - rect.top;
 
+    // Calculate relative positions with more nuanced calculations
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
 
-    const rotateX = ((yPos - centerY) / centerY) * -10;
-    const rotateY = ((xPos - centerX) / centerX) * 10;
+    // Increased responsiveness and more dynamic rotation
+    const rotateX = ((yPos - centerY) / centerY) * -15; // Increased range
+    const rotateY = ((xPos - centerX) / centerX) * 15; // Increased range
 
+    // Add subtle scaling and shadow for depth effect
     gsap.to(element, {
-      duration: 0.3,
+      duration: 0.5, // Slightly longer duration for smoother transition
       rotateX,
       rotateY,
-      transformPerspective: 500,
-      ease: "power1.inOut",
+      scale: 1.05, // Subtle scale-up on hover
+      boxShadow: "0 20px 30px rgba(0,0,0,0.2)", // Adds depth illusion
+      transformPerspective: 800, // Increased perspective for more 3D feel
+      ease: "power3.out", // Softer, more natural easing
+      transformOrigin: "center center", // Ensure consistent rotation point
     });
   };
 
   const handleMouseLeave = () => {
     const element = frameRef.current;
-
     if (element) {
       gsap.to(element, {
-        duration: 0.3,
+        duration: 0.5, // Match move duration
         rotateX: 0,
         rotateY: 0,
-        ease: "power1.inOut",
+        scale: 1, // Return to original size
+        boxShadow: "0 10px 15px rgba(0,0,0,0.1)", // Subtle shadow at rest
+        ease: "power3.out", // Consistent easing
       });
     }
   };
